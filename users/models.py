@@ -43,7 +43,7 @@ class Trainer(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, primary_key=True)
     first_name = models.CharField(max_length=100, blank=True, null=True, default=None)
     last_name = models.CharField(max_length=100, blank=True, null=True, default=None)
-    age = models.IntegerField(blank=True, null=True, default=18)
+    age = models.IntegerField(default=18)
     specialization = models.CharField(max_length=100)
     experience = models.IntegerField(default=3)
 
