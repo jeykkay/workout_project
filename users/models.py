@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser, BaseUserManager, PermissionsMixin
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 
 
 class CustomUserManager(BaseUserManager):
@@ -21,7 +21,7 @@ class CustomUserManager(BaseUserManager):
         return self.create_user(email, password, **extra_fields)
 
 
-class CustomUser(AbstractUser, PermissionsMixin):
+class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
     first_name = models.CharField(max_length=100, blank=True, null=True, default=None)
     last_name = models.CharField(max_length=100, blank=True, null=True, default=None)
@@ -43,7 +43,7 @@ class Trainer(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, primary_key=True)
     first_name = models.CharField(max_length=100, blank=True, null=True, default=None)
     last_name = models.CharField(max_length=100, blank=True, null=True, default=None)
-    age = models.PositiveIntegerField(blank=True, null=True, default=18)
+    age = models.IntegerField(blank=True, null=True, default=18)
     specialization = models.CharField(max_length=100)
     experience = models.IntegerField(default=3)
 
