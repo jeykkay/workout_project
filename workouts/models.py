@@ -32,4 +32,4 @@ class WorkoutSession(models.Model):
     note = models.TextField()
 
     def __str__(self):
-        return f'{self.client.user.username} - {self.workout.type_workout}'
+        return f'{self.client.username} - {self.workout.type_workout}'
