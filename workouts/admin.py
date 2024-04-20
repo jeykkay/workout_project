@@ -1,18 +1,26 @@
 from django.contrib import admin
 
-from workouts.models import Workout, Exercise, WorkoutSession
+from workouts.models import Workout, Exercise, TrainingPlan, TrainingLog, DietPlan
 
 
 @admin.register(Workout)
 class WorkoutAdmin(admin.ModelAdmin):
-    list_display = ('type_workout', 'date', )
+    list_display = ('name', 'description', 'duration', )
 
 
 @admin.register(Exercise)
 class ExerciseAdmin(admin.ModelAdmin):
-    list_display = ('title', 'muscle_group', )
+    list_display = ('name', 'description', 'muscle_group', )
 
 
-@admin.register(WorkoutSession)
-class WorkoutSessionAdmin(admin.ModelAdmin):
-    list_display = ('date', 'duration', )
+@admin.register(TrainingPlan)
+class TrainingPlanAdmin(admin.ModelAdmin):
+    list_display = ('name', 'description', 'start_date', 'end_date', )
+
+
+@admin.register(DietPlan)
+class DietPlanAdmin(admin.ModelAdmin):
+    list_display = ('name', 'description', 'start_date', 'end_date', )
+
+
+admin.site.register(TrainingLog)

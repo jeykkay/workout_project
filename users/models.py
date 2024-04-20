@@ -40,7 +40,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
 
 class Trainer(models.Model):
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, primary_key=True)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, primary_key=True)
     first_name = models.CharField(max_length=100, blank=True, null=True, default=None)
     last_name = models.CharField(max_length=100, blank=True, null=True, default=None)
     age = models.IntegerField(default=18)
