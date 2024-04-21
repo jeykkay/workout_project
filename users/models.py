@@ -35,6 +35,10 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     objects = CustomUserManager()
 
+    class Meta:
+        verbose_name = 'Пользователь'
+        verbose_name_plural = 'Пользователи'
+
     def __str__(self):
         return self.email
 
@@ -47,5 +51,9 @@ class Trainer(models.Model):
     specialization = models.CharField(max_length=100)
     experience = models.IntegerField(default=3)
 
+    class Meta:
+        verbose_name = 'Тренер'
+        verbose_name_plural = 'Тренеры'
+
     def __str__(self):
-        return self.user.username
+        return f"{self.user.first_name} - Couch({self.first_name})"

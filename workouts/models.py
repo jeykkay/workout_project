@@ -43,7 +43,7 @@ class TrainingPlan(models.Model):
         verbose_name_plural = 'План тренировок'
 
     def __str__(self):
-        return self.title
+        return self.name
 
 
 class TrainingLog(models.Model):
@@ -55,6 +55,9 @@ class TrainingLog(models.Model):
     class Meta:
         verbose_name = 'Журнал тренировки'
         verbose_name_plural = 'Журнал тренировок'
+
+    def __str__(self):
+        return f"{self.workout} - {self.notes}"
 
 
 class DietPlan(models.Model):
@@ -68,4 +71,4 @@ class DietPlan(models.Model):
         verbose_name_plural = 'План питания'
 
     def __str__(self):
-        return self.title
+        return self.name

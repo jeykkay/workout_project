@@ -17,7 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from workouts.views import WorkoutAPIView, ExerciseAPIView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/', include('users.urls')),
+    path('api/v1/workouts/', WorkoutAPIView.as_view()),
+    path('api/v2/exercise/', ExerciseAPIView.as_view()),
+    path('api/v1/workouts/<int:pk>/', WorkoutAPIView.as_view()),
 ]
